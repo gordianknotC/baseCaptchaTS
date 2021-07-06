@@ -13,17 +13,19 @@
     "jsxFactory": "h",                        /* Specify the JSX factory function to use when targeting react JSX emit, e.g. React.createElement or h. */
     "lib": [
       "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
+      "dom"
     ],
     "module": "ESNext",
     "moduleResolution": "node",
-    "noEmit": true,
+    /**
+    You shouldn't use "noEmit": true in your tsconfig.json if you compile with tsc.
+    From compiler options description --noEmit - Do not emit outputs.*/
+    "noEmit": false,
     "noImplicitAny": true,                 /* Raise error on expressions and declarations with an implied 'any' type. */
     "noImplicitReturns": true,             /* Report error when not all code paths in function return a value. */
     "noImplicitThis": true,                 /* Raise error on 'this' expressions with an implied 'any' type. */
-    "outDir": "./dist/out-tsc",                        /* Redirect output structure to the directory. */
+    "outDir": "dist",                        /* Redirect output structure to the directory. */
+    "target": "ES2018",
     "paths": {
       /*
       *     A L I A S   P A T H
@@ -45,24 +47,27 @@
     "strictFunctionTypes": true,
     "strictNullChecks": true,              /* Enable strict null checks. */
     "strictPropertyInitialization": true,
-    "target": "ES2018",
     "typeRoots": [
-      "node_modules/@types",
-      "src/types",
-      "src/types/thirdParty"
+      "node_modules/@types"
     ],
     "types": [
+      "node"
     ]
   },
   "include": [
+    "src",
     "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx",
-    "src/**/*.svg"
+    "src/index.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
+  ],
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "files": [
+    "src/index.ts"
   ]
 }

@@ -1,6 +1,5 @@
 .DS_Store
 node_modules
-/dist
 /develop
 /production
 /release
@@ -9,7 +8,6 @@ node_modules
 # local env files
 .env.local
 .env.*.local
-src/types/extendBase/appConfigs.ts
 
 # Log files
 npm-debug.log*
