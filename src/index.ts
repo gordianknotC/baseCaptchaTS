@@ -1,5 +1,5 @@
 
-import {CaptchaOptions, Captcha} from "base/capcha";
+import {CaptchaOptions, Captcha} from "~/base/capcha";
 
 /**
  *        M I X I N S

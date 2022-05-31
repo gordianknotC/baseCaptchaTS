@@ -2,7 +2,9 @@
 type none = null | undefined;
 type CaptchaCallback = (response: "success" | "error", captcha: Element, numberOfTries: number) => void;
 
-export type CaptchaOptions = {
+
+export
+type CaptchaOptions = {
   el: string;
   canvasClass?: string | none;
   numbersOfTries: number;
@@ -54,6 +56,7 @@ const defaultOption: CaptchaOptions = {
   }
 };
 
+export
 class Captcha{
   $el?: Element | none;
   $captchaEl?: HTMLCanvasElement | none;
