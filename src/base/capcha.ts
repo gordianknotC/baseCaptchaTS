@@ -1,6 +1,10 @@
-import { assert } from "common_js_builtin/dist/utils/assert";
-import { is } from "common_js_builtin/dist/utils/typeInferernce";
-import CryptoJS from "crypto-js";
+
+export function assert(condition, message) {
+  if (!condition) {
+    const msg = message !== null && message !== void 0 ? message : "";
+    throw new Error(`AssertionError: ${msg}`);
+  }
+}
 
 type none = null | undefined;
 type CaptchaCallback = (response: "success" | "error", captcha: Element, numberOfTries: number) => void;
@@ -63,20 +67,6 @@ const defaultOption: CaptchaOptions = {
 
 const SOLID = "POSITIVE_NEGATIVE";
 
-export
-const enc = (text:string) => {
-  return CryptoJS.AES.encrypt(text, SOLID).toString();
-};
-
-export
-const dec = (ciphertext:string) => {
-  try {
-    const bytes = CryptoJS.AES.decrypt(ciphertext, SOLID);
-    return bytes.toString(CryptoJS.enc.Utf8);
-  } catch (e) {
-    throw e;
-  }
-};
 
 function transformFont(font: string, fontSize: string){
   return `${fontSize} ${font}`;
@@ -94,7 +84,8 @@ class Captcha{
 
     document.querySelector(this.options.el!);
     this.$el = document.querySelector(this.options.el!);
-    assert(is.not.empty(this.$el), `unexpect null dom, selector: ${this.options.el}`);
+    assert(this.$el, `unexpect null dom, selector: ${this.options.el}`);
+
     this.options.beforeGenerateCaptcha(this);
     this.setCaptcha(false);
   }
