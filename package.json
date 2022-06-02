@@ -1,24 +1,16 @@
 {
   "name": "base_captcha_ts",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "description": "",
   "scripts": {
-    "prepublish": "tsc -p tsconfig.json",
-    "serve": "vue-cli-service serve"
+    "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
+    "serve": "vue-cli-service serve",
+    "build:watch": "concurrently --kill-others \"tsc -w\" \"tsc-alias -w\""
   },
   "main": "dist/index.ts",
   "types": "dist/index.d.ts",
   "publishConfig": {
     "access": "public"
-  },
-
-  "notes": {
-    "main": "src/index.js",
-    "types": "src/index.d.ts",
-    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gordianknotC/baseCaptchaTS.git"
-    }
   },
   "peerDependencies": {
   },
