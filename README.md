@@ -1,11 +1,8 @@
 
-export function assert(condition: any, message: string) {
-  if (!condition) {
-    const msg = message !== null && message !== void 0 ? message : "";
-    throw new Error(`AssertionError: ${msg}`);
-  }
-}
+生成文字圖片，用於很簡單的 captcha, 用於不想爬蟲抓到文字的情境中。
 
+### source
+```ts
 type none = null | undefined;
 type CaptchaCallback = (response: "success" | "error", captcha: Element, numberOfTries: number) => void;
 
@@ -148,4 +145,4 @@ class Captcha{
     this.setCaptcha(true);
   }
 }
-
+```
